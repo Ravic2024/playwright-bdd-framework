@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Playwright BDD Rerun Suite" verbose="1" data-provider-thread-count="3">
+    <test name="Rerun Failed">
+        <classes>
+            <class name="com.qa.framework.runners.FailedTestRunner"/>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="LOG_DIR">test-output/logs</Property>
+        <Property name="PATTERN">%d{HH:mm:ss.SSS} [%-5level] [%t] %c{1} - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${PATTERN}"/>
+        </Console>
+
+        <!-- General framework log (every run) -->
+        <File name="FrameworkFile" fileName="${LOG_DIR}/framework.log" append="false">
+            <PatternLayout pattern="${PATTERN}"/>
+        </File>
+
+        <!-- Written ONLY when a scenario fails: steps executed up to the failure + the error -->
+        <File name="FailedScenarioFile" fileName="${LOG_DIR}/failed-scenarios.log" append="false" createOnDemand="true">
+            <PatternLayout pattern="%msg%n"/>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="FailedScenarioLogger" level="error" additivity="false">
+            <AppenderRef ref="FailedScenarioFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FrameworkFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

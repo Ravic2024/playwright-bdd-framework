@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Parallel thread count:
+   - Run from Maven (mvn test -Dthreads=4): the pom value overrides this.
+   - Run this file directly in Eclipse/IntelliJ: data-provider-thread-count below is used.
+-->
+<suite name="Playwright BDD Suite" verbose="1" data-provider-thread-count="3">
+    <test name="Regression">
+        <classes>
+            <class name="com.qa.framework.runners.TestRunner"/>
+        </classes>
+    </test>
+</suite>
